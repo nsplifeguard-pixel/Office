@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0d">
+<title>AI Digital Workspace</title>
+<style>
+:root{--bg:#09090c;--panel:#121217;--panel2:#19191f;--line:#2b2b34;--text:#f4f4f6;--muted:#a1a1ad;--red:#f04452;--red2:#b91c2b;--silver:#c7c7d0;--green:#39c98a;--radius:18px}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% -20%,#36121a 0,transparent 40%),var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;min-height:100vh}
+button,input,textarea,select{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:250px minmax(0,1fr);min-height:100vh}.sidebar{padding:22px 16px;border-right:1px solid var(--line);background:#0b0b0f;position:sticky;top:0;height:100vh;overflow:auto}.brand{display:flex;gap:12px;align-items:center;padding:4px 8px 24px}.brandmark{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,var(--red),#7e1520);display:grid;place-items:center;font-weight:900;box-shadow:0 8px 30px #f0445230}.brand strong{display:block;letter-spacing:.4px}.brand small{color:var(--muted)}.navlabel{font-size:11px;letter-spacing:1.4px;color:#747480;padding:14px 12px 8px}.nav{display:grid;gap:5px}.nav button{border:0;background:transparent;color:#bcbcc6;text-align:left;padding:12px;border-radius:12px;display:flex;align-items:center;gap:12px}.nav button:hover,.nav button.active{background:#291116;color:#fff}.nav button.active{box-shadow:inset 3px 0 var(--red)}.nav .ico{width:22px;text-align:center;font-size:17px}.sidebarfoot{margin-top:28px;padding:14px;border:1px solid var(--line);border-radius:14px;color:var(--muted);font-size:12px;line-height:1.6}
+.main{min-width:0;padding:22px clamp(14px,3vw,36px) 40px}.topbar{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:26px}.crumb{color:var(--muted);font-size:13px}.topright{display:flex;align-items:center;gap:10px}.pill{border:1px solid var(--line);border-radius:999px;padding:8px 12px;color:var(--silver);font-size:12px}.avatar{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:#2b171c;border:1px solid #60303a;color:#ffb5bd;font-weight:700}
+h1{font-size:clamp(25px,3vw,36px);letter-spacing:-.8px;margin:0 0 8px}h2{font-size:18px;margin:0 0 14px}h3{font-size:15px;margin:0 0 8px}.muted{color:var(--muted)}.sub{color:var(--muted);margin:0 0 24px;line-height:1.7}.section{display:none}.section.active{display:block}.grid{display:grid;gap:16px}.stats{grid-template-columns:repeat(4,minmax(0,1fr));margin:22px 0}.card{background:linear-gradient(145deg,#15151b,#101014);border:1px solid var(--line);border-radius:var(--radius);padding:18px;min-width:0}.statlabel{font-size:13px;color:var(--muted)}.statvalue{font-size:30px;font-weight:750;margin:12px 0 4px}.statnote{font-size:12px;color:var(--silver)}.accent{color:#ff6672}.twocol{grid-template-columns:minmax(0,1.25fr) minmax(270px,.75fr)}.threecol{grid-template-columns:repeat(3,minmax(0,1fr))}.row{display:flex;align-items:center;justify-content:space-between;gap:12px}.stack{display:grid;gap:12px}.taskrow{padding:12px 0;border-bottom:1px solid #282830;display:flex;align-items:flex-start;gap:11px}.taskrow:last-child{border:0}.dot{width:9px;height:9px;border-radius:50%;background:var(--red);margin-top:6px;flex:none}.tasktitle{font-weight:600;font-size:14px}.taskmeta{font-size:12px;color:var(--muted);margin-top:4px}.btn{border:1px solid var(--line);background:#202027;color:#f7f7f9;border-radius:11px;padding:10px 14px;font-weight:600}.btn:hover{border-color:#656571}.btn.primary{background:linear-gradient(135deg,var(--red),var(--red2));border-color:transparent}.btn.ghost{background:transparent}.btn.small{padding:7px 10px;font-size:12px}.btn.danger{color:#ff7b85}.toolbar{display:flex;gap:9px;flex-wrap:wrap}.field{display:grid;gap:7px;margin-bottom:13px}.field label{font-size:13px;color:#c9c9d1}.field input,.field textarea,.field select,.search{width:100%;background:#0c0c11;color:var(--text);border:1px solid #34343e;border-radius:11px;padding:12px;outline:none}.field textarea{min-height:110px;resize:vertical}.field input:focus,.field textarea:focus,.field select:focus,.search:focus{border-color:var(--red)}.search{max-width:360px}.list{display:grid;gap:10px}.item{border:1px solid var(--line);background:#141419;border-radius:14px;padding:14px}.item p{white-space:pre-wrap;overflow-wrap:anywhere}.tag{display:inline-flex;border:1px solid #493038;background:#251318;color:#ffb6bd;border-radius:999px;padding:4px 8px;font-size:11px}.empty{padding:30px 12px;text-align:center;color:var(--muted);border:1px dashed #393943;border-radius:14px}.chatbox{display:flex;flex-direction:column;gap:12px;min-height:360px}.chatlog{flex:1;display:grid;align-content:start;gap:12px;max-height:50vh;overflow:auto;padding:4px}.bubble{max-width:88%;padding:12px 14px;border-radius:14px;line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere}.bubble.user{margin-left:auto;background:#521923;border:1px solid #7b2834}.bubble.system{background:#1a1a22;border:1px solid var(--line);color:#ddd}.chatinput{display:flex;gap:8px}.chatinput input{flex:1;min-width:0;background:#0c0c11;border:1px solid #34343e;border-radius:12px;padding:12px;color:#fff}.notice{background:#251a0d;border:1px solid #60471e;color:#f2d7a2;border-radius:12px;padding:12px;font-size:13px;line-height:1.6}.progress{height:7px;background:#292931;border-radius:99px;overflow:hidden;margin-top:12px}.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--red),#ff8a92);width:0}.mobilehead{display:none}.toast{position:fixed;right:18px;bottom:18px;background:#1c1c23;border:1px solid #454550;padding:12px 16px;border-radius:12px;box-shadow:0 10px 35px #0008;z-index:10;max-width:min(90vw,380px)}.hidden{display:none!important}.smallmuted{font-size:12px;color:var(--muted)}.footnote{font-size:12px;color:#858591;margin-top:18px;line-height:1.7}
+@media(max-width:1000px){.app{grid-template-columns:210px minmax(0,1fr)}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.twocol{grid-template-columns:1fr}.threecol{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.app{display:block}.sidebar{position:fixed;z-index:20;top:auto;bottom:0;left:0;right:0;width:100%;height:auto;padding:7px 6px calc(7px + env(safe-area-inset-bottom));border-right:0;border-top:1px solid var(--line);background:#0b0b0ff5;backdrop-filter:blur(14px)}.brand,.navlabel,.sidebarfoot{display:none}.nav{display:flex;justify-content:space-around;gap:2px}.nav button{display:grid;justify-items:center;gap:3px;text-align:center;padding:7px 4px;font-size:10px;flex:1;border-radius:10px}.nav .ico{font-size:18px}.nav button.active{box-shadow:inset 0 2px var(--red)}.main{padding:17px 13px calc(95px + env(safe-area-inset-bottom))}.topbar{margin-bottom:20px}.pill{display:none}.stats{gap:10px}.card{padding:14px;border-radius:15px}.statvalue{font-size:26px}.threecol{grid-template-columns:1fr}.chatinput{flex-wrap:wrap}.chatinput input{flex-basis:100%}.chatlog{max-height:42vh}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand"><div class="brandmark">AI</div><div><strong>DIGITAL WORKSPACE</strong><small>ห้องทำงานอัจฉริยะ</small></div></div>
+  <div class="navlabel">WORKSPACE</div>
+  <nav class="nav" id="nav">
+    <button class="active" data-page="dashboard"><span class="ico">◫</span>ภาพรวม</button>
+    <button data-page="ai"><span class="ico">✦</span>AI ผู้ช่วย</button>
+    <button data-page="tasks"><span class="ico">☑</span>งานของฉัน</button>
+    <button data-page="projects"><span class="ico">▤</span>โปรเจกต์</button>
+    <button data-page="documents"><span class="ico">▧</span>เอกสาร</button>
+    <button data-page="calendar"><span class="ico">▦</span>ปฏิทิน</button>
+    <button data-page="settings"><span class="ico">⚙</span>ตั้งค่า</button>
+  </nav>
+  <div class="sidebarfoot">พื้นที่ทำงานส่วนตัว<br>ข้อมูลรุ่นนี้จัดเก็บในเบราว์เซอร์ของอุปกรณ์นี้</div>
+</aside>
+<main class="main">
+  <header class="topbar"><div class="crumb">ห้องทำงาน / <span id="crumb">ภาพรวม</span></div><div class="topright"><span class="pill">● โหมดจัดเก็บในอุปกรณ์</span><div class="avatar" id="avatar">U</div></div></header>
+
+  <section class="section active" id="page-dashboard">
+    <h1>ห้องทำงานของคุณ<span class="accent">.</span></h1><p class="sub">รวมงาน ไอเดีย และเอกสารไว้ในที่เดียว เริ่มต้นจัดการวันของคุณได้เลย</p>
+    <div class="toolbar"><button class="btn primary" onclick="openCreateTask()">＋ สร้างงานใหม่</button><button class="btn" onclick="openCreateDoc()">＋ สร้างเอกสาร</button><button class="btn" onclick="go('ai')">✦ เปิด AI ผู้ช่วย</button></div>
+    <div class="grid stats">
+      <div class="card"><div class="statlabel">งานทั้งหมด</div><div class="statvalue" id="stat-all">0</div><div class="statnote">รายการในพื้นที่นี้</div></div>
+      <div class="card"><div class="statlabel">กำลังดำเนินการ</div><div class="statvalue accent" id="stat-active">0</div><div class="statnote">งานที่ยังไม่เสร็จ</div></div>
+      <div class="card"><div class="statlabel">เสร็จแล้ว</div><div class="statvalue" id="stat-done">0</div><div class="statnote">ทำสำเร็จแล้ว</div></div>
+      <div class="card"><div class="statlabel">เอกสาร</div><div class="statvalue" id="stat-docs">0</div><div class="statnote">เอกสารที่บันทึกไว้</div></div>
+    </div>
+    <div class="grid twocol">
+      <div class="card"><div class="row"><h2>งานล่าสุด</h2><button class="btn small ghost" onclick="go('tasks')">ดูทั้งหมด →</button></div><div id="dashboard-tasks" class="list"></div></div>
+      <div class="card"><h2>ทางลัด</h2><div class="stack">
+        <button class="btn" onclick="go('projects')">▤　จัดการโปรเจกต์</button><button class="btn" onclick="go('documents')">▧　เปิดคลังเอกสาร</button><button class="btn" onclick="go('calendar')">▦　ดูปฏิทินงาน</button>
+      </div><div class="footnote">ข้อมูลจะถูกเก็บไว้ในเบราว์เซอร์นี้ หากล้างข้อมูลเว็บไซต์หรือเปลี่ยนอุปกรณ์ ข้อมูลอาจไม่ตามไปด้วย</div></div>
+    </div>
+  </section>
+
+  <section class="section" id="page-ai">
+    <h1>AI ผู้ช่วย<span class="accent">.</span></h1><p class="sub">พื้นที่สนทนาและทำงานร่วมกับ AI</p>
+    <div class="notice">สถานะ: ยังไม่ได้เชื่อมต่อ AI API — หน้านี้จะไม่สร้างคำตอบ AI ปลอม กรุณาเชื่อมต่อบริการ AI ก่อนใช้งานจริง</div>
+    <div class="card chatbox" style="margin-top:16px">
+      <div class="chatlog" id="chatlog"><div class="bubble system">สวัสดีครับ นี่คือพื้นที่ AI Assistant ของคุณ เมื่อเชื่อมต่อ API แล้ว คุณจะสามารถถามตอบภาษาไทย สรุปเอกสาร และช่วยวางแผนงานได้</div></div>
+      <form class="chatinput" id="chatform"><input id="chattext" placeholder="พิมพ์ข้อความของคุณ..." autocomplete="off"><button class="btn primary">ส่งข้อความ</button></form>
+      <div class="smallmuted">ประวัติแชตในตัวอย่างนี้ยังไม่เชื่อมต่อบริการ AI</div>
+    </div>
+  </section>
+
+  <section class="section" id="page-tasks">
+    <div class="row" style="flex-wrap:wrap"><div><h1>งานของฉัน<span class="accent">.</span></h1><p class="sub">จัดระเบียบงานและติดตามความคืบหน้า</p></div><button class="btn primary" onclick="openCreateTask()">＋ สร้างงาน</button></div>
+    <div class="toolbar" style="margin-bottom:14px"><input class="search" id="tasksearch" placeholder="ค้นหางาน..." oninput="renderTasks()"><select class="search" id="taskfilter" style="max-width:220px" onchange="renderTasks()"><option value="">ทุกสถานะ</option><option>ยังไม่เริ่ม</option><option>กำลังดำเนินการ</option><option>เสร็จแล้ว</option></select></div>
+    <div id="tasks-list" class="list"></div>
+  </section>
+
+  <section class="section" id="page-projects">
+    <div class="row" style="flex-wrap:wrap"><div><h1>โปรเจกต์<span class="accent">.</span></h1><p class="sub">ติดตามเป้าหมายและงานในแต่ละโครงการ</p></div><button class="btn primary" onclick="openCreateProject()">＋ สร้างโปรเจกต์</button></div>
+    <div id="projects-list" class="grid threecol"></div>
+  </section>
+
+  <section class="section" id="page-documents">
+    <div class="row" style="flex-wrap:wrap"><div><h1>คลังเอกสาร<span class="accent">.</span></h1><p class="sub">บันทึกไอเดีย โน้ต และเนื้อหาสำคัญ</p></div><button class="btn primary" onclick="openCreateDoc()">＋ สร้างเอกสาร</button></div>
+    <input class="search" id="docsearch" placeholder="ค้นหาเอกสาร..." oninput="renderDocs()" style="margin-bottom:14px">
+    <div id="docs-list" class="list"></div>
+  </section>
+
+  <section class="section" id="page-calendar">
+    <h1>ปฏิทินงาน<span class="accent">.</span></h1><p class="sub">กำหนดส่งงานจากรายการที่คุณบันทึกไว้</p>
+    <div class="card"><div class="row"><button class="btn" onclick="changeMonth(-1)">← เดือนก่อน</button><h2 id="month-title"></h2><button class="btn" onclick="changeMonth(1)">เดือนถัดไป →</button></div><div id="calendar-grid" style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;margin-top:18px"></div><div class="footnote">เลือกวันที่เพื่อดูงานที่กำหนดส่งในวันนั้น</div></div>
+    <div class="card" style="margin-top:14px"><h2 id="day-title">งานตามวันที่</h2><div id="calendar-day"></div></div>
+  </section>
+
+  <section class="section" id="page-settings">
+    <h1>ตั้งค่า<span class="accent">.</span></h1><p class="sub">ปรับแต่งพื้นที่ทำงานของคุณ</p>
+    <div class="card" style="max-width:680px"><form id="settingsform">
+      <div class="field"><label for="username">ชื่อที่ใช้แสดง</label><input id="username" placeholder="เช่น คุณเอ"></div>
+      <div class="field"><label for="workspace">ชื่อพื้นที่ทำงาน</label><input id="workspace" placeholder="AI Digital Workspace"></div>
+      <button class="btn primary">บันทึกการตั้งค่า</button>
+    </form><hr style="border:0;border-top:1px solid var(--line);margin:22px 0">
+      <h3>ข้อมูลและความเป็นส่วนตัว</h3><p class="muted" style="font-size:13px;line-height:1.7">รุ่นนี้เก็บงาน โปรเจกต์ และเอกสารไว้ใน localStorage ของเบราว์เซอร์ ไม่ใช่ฐานข้อมูลออนไลน์ และไม่มีระบบสมัครสมาชิกหรือซิงก์ข้ามอุปกรณ์</p>
+      <div class="toolbar"><button class="btn" onclick="exportData()">ส่งออกข้อมูล JSON</button><label class="btn" for="importfile">นำเข้า JSON</label><input id="importfile" class="hidden" type="file" accept="application/json" onchange="importData(event)"><button class="btn danger" onclick="clearData()">ล้างข้อมูลทั้งหมด</button></div>
+      <div class="footnote">ก่อนล้างข้อมูล ระบบจะถามยืนยันทุกครั้ง ควรส่งออกข้อมูลสำรองไว้ก่อน</div>
+    </div>
+  </section>
+</main>
+</div>
+<div id="modal" class="hidden" style="position:fixed;inset:0;z-index:30;background:#000b;display:none;align-items:center;justify-content:center;padding:16px">
+ <div class="card" style="width:min(100%,560px);max-height:90vh;overflow:auto;background:#15151b">
+  <div class="row"><h2 id="modal-title">สร้างรายการ</h2><button class="btn small" onclick="closeModal()">✕</button></div>
+  <form id="modal-form"><div id="modal-fields"></div><div class="toolbar"><button class="btn primary">บันทึก</button><button type="button" class="btn" onclick="closeModal()">ยกเลิก</button></div></form>
+ </div>
+</div>
+<div id="toast" class="toast hidden" role="status"></div>
+<script>
+const KEY='ai-digital-workspace-v1';
+const defaults={tasks:[],projects:[],docs:[],settings:{username:'ผู้ใช้งาน',workspace:'AI Digital Workspace'}};
+let data=loadData(), editing=null, calDate=new Date(), selectedDate=isoDate(new Date());
+function loadData(){try{return {...structuredClone(defaults),...JSON.parse(localStorage.getItem(KEY)||'{}')}}catch(e){return structuredClone(defaults)}}
+function save(){localStorage.setItem(KEY,JSON.stringify(data));renderAll()}
+function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,7)}
+function isoDate(d){return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
+function esc(s=''){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.remove('hidden');setTimeout(()=>t.classList.add('hidden'),2600)}
+const pages={dashboard:'ภาพรวม',ai:'AI ผู้ช่วย',tasks:'งานของฉัน',projects:'โปรเจกต์',documents:'เอกสาร',calendar:'ปฏิทิน',settings:'ตั้งค่า'};
+function go(page){document.querySelectorAll('.section').forEach(x=>x.classList.toggle('active',x.id==='page-'+page));document.querySelectorAll('#nav button').forEach(x=>x.classList.toggle('active',x.dataset.page===page));document.getElementById('crumb').textContent=pages[page]||page; if(page==='calendar')renderCalendar();window.scrollTo({top:0,behavior:'smooth'})}
+document.getElementById('nav').addEventListener('click',e=>{const b=e.target.closest('button[data-page]');if(b)go(b.dataset.page)});
+function renderAll(){renderDashboard();renderTasks();renderProjects();renderDocs();renderCalendar();const s=data.settings||defaults.settings;document.getElementById('avatar').textContent=(s.username||'U').trim().charAt(0).toUpperCase();document.title=(s.workspace||'AI Digital Workspace')}
+function renderDashboard(){const done=data.tasks.filter(t=>t.status==='เสร็จแล้ว').length;document.getElementById('stat-all').textContent=data.tasks.length;document.getElementById('stat-active').textContent=data.tasks.length-done;document.getElementById('stat-done').textContent=done;document.getElementById('stat-docs').textContent=data.docs.length;const el=document.getElementById('dashboard-tasks');const arr=[...data.tasks].sort((a,b)=>(a.due||'9999').localeCompare(b.due||'9999')).slice(0,5);el.innerHTML=arr.length?arr.map(taskRow).join(''):'<div class="empty">ยังไม่มีงาน เริ่มจากสร้างงานแรกของคุณ</div>'}
+function taskRow(t){return `<div class="taskrow"><span class="dot" style="background:${t.status==='เสร็จแล้ว'?'var(--green)':t.priority==='เร่งด่วน'?'#ff6672':'#d3a34d'}"></span><div style="min-width:0;flex:1"><div class="tasktitle">${esc(t.title)}</div><div class="taskmeta">${esc(t.due||'ไม่กำหนดวัน')} · ${esc(t.status)} ${t.priority?'· '+esc(t.priority):''}</div></div></div>`}
+function renderTasks(){const q=(document.getElementById('tasksearch')?.value||'').toLowerCase(),f=document.getElementById('taskfilter')?.value||'';const arr=data.tasks.filter(t=>(t.title+' '+(t.description||'')).toLowerCase().includes(q)&&(!f||t.status===f));const el=document.getElementById('tasks-list');el.innerHTML=arr.length?arr.map(t=>`<div class="item"><div class="row" style="align-items:flex-start"><div style="min-width:0"><h3>${esc(t.title)}</h3><div class="taskmeta">${esc(t.due||'ไม่กำหนดวัน')} · ${esc(t.status)} · ${esc(t.priority||'ปกติ')}</div></div><span class="tag">${esc(t.status)}</span></div>${t.description?`<p class="muted" style="font-size:13px">${esc(t.description)}</p>`:''}<div class="toolbar"><button class="btn small" onclick="cycleTask('${t.id}')">เปลี่ยนสถานะ</button><button class="btn small" onclick="editTask('${t.id}')">แก้ไข</button><button class="btn small danger" onclick="deleteTask('${t.id}')">ลบ</button></div></div>`).join(''):'<div class="empty">ไม่พบงานในรายการนี้</div>'}
+function openModal(title,fields,submit){document.getElementById('modal-title').textContent=title;document.getElementById('modal-fields').innerHTML=fields;document.getElementById('modal-form').onsubmit=submit;const m=document.getElementById('modal');m.classList.remove('hidden');m.style.display='flex'}
+function closeModal(){const m=document.getElementById('modal');m.style.display='none';m.classList.add('hidden');editing=null}
+function field(id,label,placeholder='',type='text',value=''){return `<div class="field"><label for="${id}">${label}</label><input id="${id}" type="${type}" placeholder="${placeholder}" value="${esc(value)}"></div>`}
+function area(id,label,value=''){return `<div class="field"><label for="${id}">${label}</label><textarea id="${id}">${esc(value)}</textarea></div>`}
+function selectField(id,label,opts,value){return `<div class="field"><label for="${id}">${label}</label><select id="${id}">${opts.map(o=>`<option ${o===value?'selected':''}>${o}</option>`).join('')}</select></div>`}
+function openCreateTask(){editing=null;openModal('สร้างงานใหม่',field('f-title','ชื่องาน','ระบุชื่องาน')+area('f-desc','รายละเอียด')+field('f-due','วันครบกำหนด','','date')+selectField('f-status','สถานะ',['ยังไม่เริ่ม','กำลังดำเนินการ','เสร็จแล้ว'],'ยังไม่เริ่ม')+selectField('f-priority','ความสำคัญ',['ต่ำ','ปานกลาง','สูง','เร่งด่วน'],'ปานกลาง'),e=>{e.preventDefault();const title=document.getElementById('f-title').value.trim();if(!title){toast('กรุณาระบุชื่องาน');return}data.tasks.unshift({id:uid(),title,description:document.getElementById('f-desc').value,due:document.getElementById('f-due').value,status:document.getElementById('f-status').value,priority:document.getElementById('f-priority').value,createdAt:new Date().toISOString()});closeModal();save();toast('บันทึกงานแล้ว')})}
+function editTask(id){const t=data.tasks.find(x=>x.id===id);if(!t)return;editing=id;openModal('แก้ไขงาน',field('f-title','ชื่องาน','', 'text',t.title)+area('f-desc','รายละเอียด',t.description)+field('f-due','วันครบกำหนด','','date',t.due)+selectField('f-status','สถานะ',['ยังไม่เริ่ม','กำลังดำเนินการ','เสร็จแล้ว'],t.status)+selectField('f-priority','ความสำคัญ',['ต่ำ','ปานกลาง','สูง','เร่งด่วน'],t.priority),e=>{e.preventDefault();const title=document.getElementById('f-title').value.trim();if(!title){toast('กรุณาระบุชื่องาน');return}Object.assign(t,{title,description:document.getElementById('f-desc').value,due:document.getElementById('f-due').value,status:document.getElementById('f-status').value,priority:document.getElementById('f-priority').value});closeModal();save();toast('แก้ไขงานแล้ว')})}
+function cycleTask(id){const t=data.tasks.find(x=>x.id===id);if(!t)return;const s=['ยังไม่เริ่ม','กำลังดำเนินการ','เสร็จแล้ว'];t.status=s[(s.indexOf(t.status)+1)%s.length];save();toast('เปลี่ยนสถานะแล้ว')}
+function deleteTask(id){if(confirm('ต้องการลบงานนี้หรือไม่?')){data.tasks=data.tasks.filter(t=>t.id!==id);save();toast('ลบงานแล้ว')}}
+function openCreateProject(){editing=null;openModal('สร้างโปรเจกต์',field('p-title','ชื่อโปรเจกต์','ระบุชื่อโปรเจกต์')+area('p-desc','รายละเอียด')+field('p-due','กำหนดส่ง','','date'),e=>{e.preventDefault();const title=document.getElementById('p-title').value.trim();if(!title){toast('กรุณาระบุชื่อโปรเจกต์');return}data.projects.unshift({id:uid(),title,description:document.getElementById('p-desc').value,due:document.getElementById('p-due').value,createdAt:new Date().toISOString()});closeModal();save();toast('บันทึกโปรเจกต์แล้ว')})}
+function renderProjects(){const el=document.getElementById('projects-list');el.innerHTML=data.projects.length?data.projects.map(p=>{const ts=data.tasks.filter(t=>t.projectId===p.id);const all=ts.length,done=ts.filter(t=>t.status==='เสร็จแล้ว').length;return `<div class="item"><span class="tag">โปรเจกต์</span><h3 style="margin-top:12px">${esc(p.title)}</h3><p class="muted" style="font-size:13px">${esc(p.description||'ไม่มีรายละเอียด')}</p><div class="taskmeta">กำหนดส่ง: ${esc(p.due||'ไม่กำหนด')} · งานที่เชื่อมโยง ${all} รายการ</div><div class="progress"><span style="width:${all?done/all*100:0}%"></span></div><div class="row" style="margin-top:12px"><span class="smallmuted">ความคืบหน้า ${all?Math.round(done/all*100):0}%</span><button class="btn small danger" onclick="deleteProject('${p.id}')">ลบ</button></div></div>`}).join(''):'<div class="empty" style="grid-column:1/-1">ยังไม่มีโปรเจกต์ กด “สร้างโปรเจกต์” เพื่อเริ่มต้น</div>'}
+function deleteProject(id){if(confirm('ต้องการลบโปรเจกต์นี้หรือไม่? งานจะไม่ถูกลบ')){data.projects=data.projects.filter(p=>p.id!==id);save();toast('ลบโปรเจกต์แล้ว')}}
+function openCreateDoc(){editing=null;openModal('สร้างเอกสาร',field('d-title','ชื่อเอกสาร','ระบุชื่อเอกสาร')+area('d-body','เนื้อหาเอกสาร'),e=>{e.preventDefault();const title=document.getElementById('d-title').value.trim();if(!title){toast('กรุณาระบุชื่อเอกสาร');return}data.docs.unshift({id:uid(),title,body:document.getElementById('d-body').value,createdAt:new Date().toISOString(),updatedAt:new Date().toISOString()});closeModal();save();toast('บันทึกเอกสารแล้ว')})}
+function editDoc(id){const d=data.docs.find(x=>x.id===id);if(!d)return;openModal('แก้ไขเอกสาร',field('d-title','ชื่อเอกสาร','', 'text',d.title)+area('d-body','เนื้อหาเอกสาร',d.body),e=>{e.preventDefault();const title=document.getElementById('d-title').value.trim();if(!title){toast('กรุณาระบุชื่อเอกสาร');return}Object.assign(d,{title,body:document.getElementById('d-body').value,updatedAt:new Date().toISOString()});closeModal();save();toast('แก้ไขเอกสารแล้ว')})}
+function renderDocs(){const q=(document.getElementById('docsearch')?.value||'').toLowerCase();const arr=data.docs.filter(d=>(d.title+' '+d.body).toLowerCase().includes(q));const el=document.getElementById('docs-list');el.innerHTML=arr.length?arr.map(d=>`<div class="item"><div class="row"><h3>${esc(d.title)}</h3><span class="smallmuted">${new Date(d.updatedAt||d.createdAt).toLocaleDateString('th-TH')}</span></div><p class="muted" style="font-size:13px">${esc((d.body||'').slice(0,260))}${(d.body||'').length>260?'…':''}</p><div class="toolbar"><button class="btn small" onclick="editDoc('${d.id}')">เปิด / แก้ไข</button><button class="btn small" onclick="copyDoc('${d.id}')">คัดลอกเนื้อหา</button><button class="btn small danger" onclick="deleteDoc('${d.id}')">ลบ</button></div></div>`).join(''):'<div class="empty">ยังไม่มีเอกสารหรือไม่พบคำค้นหา</div>'}
+function copyDoc(id){const d=data.docs.find(x=>x.id===id);if(!d)return;navigator.clipboard?.writeText(d.title+'\\n\\n'+d.body).then(()=>toast('คัดลอกแล้ว')).catch(()=>toast('อุปกรณ์นี้ไม่อนุญาตให้คัดลอกอัตโนมัติ'))}
+function deleteDoc(id){if(confirm('ต้องการลบเอกสารนี้หรือไม่?')){data.docs=data.docs.filter(d=>d.id!==id);save();toast('ลบเอกสารแล้ว')}}
+function renderCalendar(){const y=calDate.getFullYear(),m=calDate.getMonth();document.getElementById('month-title').textContent=calDate.toLocaleDateString('th-TH',{month:'long',year:'numeric'});const grid=document.getElementById('calendar-grid');const names=['อา','จ','อ','พ','พฤ','ศ','ส'];let out=names.map(n=>`<div style="text-align:center;color:var(--muted);font-size:12px;padding:8px 0">${n}</div>`).join('');const first=new Date(y,m,1).getDay(),days=new Date(y,m+1,0).getDate();for(let i=0;i<first;i++)out+='<div></div>';for(let d=1;d<=days;d++){const ds=isoDate(new Date(y,m,d)),count=data.tasks.filter(t=>t.due===ds&&t.status!=='เสร็จแล้ว').length;out+=`<button onclick="selectCalendarDate('${ds}')" style="min-height:48px;border:1px solid ${selectedDate===ds?'var(--red)':'var(--line)'};background:${selectedDate===ds?'#35131a':'#111116'};color:#fff;border-radius:10px;position:relative">${d}${count?`<span style="display:block;color:#ff7b85;font-size:10px">${count} งาน</span>`:''}</button>`}grid.innerHTML=out;renderCalendarDay()}
+function changeMonth(n){calDate.setMonth(calDate.getMonth()+n);renderCalendar()}
+function selectCalendarDate(ds){selectedDate=ds;calDate=new Date(ds+'T12:00:00');renderCalendar()}
+function renderCalendarDay(){const d=new Date(selectedDate+'T12:00:00');document.getElementById('day-title').textContent='งานวันที่ '+d.toLocaleDateString('th-TH',{day:'numeric',month:'long',year:'numeric'});const tasks=data.tasks.filter(t=>t.due===selectedDate);document.getElementById('calendar-day').innerHTML=tasks.length?tasks.map(taskRow).join(''):'<div class="empty">ไม่มีงานที่กำหนดส่งในวันนี้</div>'}
+document.getElementById('chatform').addEventListener('submit',e=>{e.preventDefault();const input=document.getElementById('chattext');const msg=input.value.trim();if(!msg)return;const log=document.getElementById('chatlog');const b=document.createElement('div');b.className='bubble user';b.textContent=msg;log.appendChild(b);const note=document.createElement('div');note.className='bubble system';note.textContent='ยังไม่ได้ส่งข้อความไปยัง AI เพราะยังไม่ได้ตั้งค่า AI API กรุณาเชื่อมต่อผู้ให้บริการ AI ในฝั่งเซิร์ฟเวอร์ก่อน';log.appendChild(note);input.value='';log.scrollTop=log.scrollHeight});
+document.getElementById('settingsform').addEventListener('submit',e=>{e.preventDefault();data.settings={username:document.getElementById('username').value.trim()||'ผู้ใช้งาน',workspace:document.getElementById('workspace').value.trim()||'AI Digital Workspace'};save();toast('บันทึกการตั้งค่าแล้ว')});
+function exportData(){const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='ai-digital-workspace-backup.json';a.click();URL.revokeObjectURL(url);toast('ส่งออกข้อมูลแล้ว')}
+function importData(e){const file=e.target.files?.[0];if(!file)return;const r=new FileReader();r.onload=()=>{try{const x=JSON.parse(r.result);if(!x||!Array.isArray(x.tasks)||!Array.isArray(x.projects)||!Array.isArray(x.docs))throw Error();if(confirm('นำเข้าข้อมูลจะเขียนทับข้อมูลปัจจุบัน ต้องการดำเนินการหรือไม่?')){data={...defaults,...x};save();toast('นำเข้าข้อมูลแล้ว')}}catch(err){toast('ไฟล์ไม่ถูกต้องหรือรูปแบบไม่รองรับ')}e.target.value=''};r.readAsText(file)}
+function clearData(){if(confirm('ยืนยันลบงาน โปรเจกต์ เอกสาร และการตั้งค่าทั้งหมดจากเบราว์เซอร์นี้? แนะนำให้ส่งออกข้อมูลก่อน')){localStorage.removeItem(KEY);data=structuredClone(defaults);save();toast('ล้างข้อมูลแล้ว')}}
+function openSettings(){document.getElementById('username').value=data.settings?.username||'';document.getElementById('workspace').value=data.settings?.workspace||''}
+const origGo=go;go=function(page){origGo(page);if(page==='settings')openSettings()};
+renderAll();openSettings();
+</script>
+</body>
+</html>
